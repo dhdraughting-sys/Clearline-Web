@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clearline Web | Clean, Professional Websites for Small Businesses | Warwickshire</title>
+<meta name="description" content="Clearline Web builds clean, professional websites for small businesses across Warwickshire and the West Midlands — fast turnaround, free ongoing hosting, and simple year-round packages.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Crect width='72' height='72' rx='16' fill='%231F3864'/%3E%3Cpath d='M50 20 A18 18 0 1 0 50 52' fill='none' stroke='%23ffffff' stroke-width='7' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='5.5' fill='%23C9A24B'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --navy:#1F3864;
+    --navy-dark:#152747;
+    --steel:#3E6FA6;
+    --line:#DCE6F1;
+    --ink:#22303F;
+    --muted:#5C6B7A;
+    --bg:#FAFBFC;
+    --white:#FFFFFF;
+    --accent:#C9A24B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  header.site-header{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1120px;margin:0 auto;}
+  .logo{display:flex;align-items:baseline;gap:10px;font-weight:700;font-size:1.25rem;color:var(--navy);}
+  .logo-mark{width:30px;height:30px;flex-shrink:0;align-self:center;}
+  .logo-mark svg{width:100%;height:100%;}
+  .logo .sub{font-size:.62em;font-weight:800;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-left:1px;}
+  nav.main-nav ul{list-style:none;display:flex;gap:28px;}
+  nav.main-nav a{font-size:.95rem;font-weight:600;color:var(--ink);}
+  nav.main-nav a:hover{color:var(--steel);}
+  .nav-cta{background:var(--navy);color:var(--white);padding:10px 20px;border-radius:6px;font-weight:600;font-size:.9rem;}
+  .nav-cta:hover{background:var(--navy-dark);}
+  .mobile-toggle{display:none;background:none;border:0;font-size:1.5rem;color:var(--navy);cursor:pointer;}
+
+  /* HERO */
+  .hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-dark) 100%);color:var(--white);padding:90px 24px 100px;position:relative;overflow:hidden;}
+  .hero::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(115deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 64px);pointer-events:none;}
+  .hero-inner{max-width:1120px;margin:0 auto;position:relative;text-align:center;}
+  .eyebrow{display:inline-block;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;font-weight:700;color:var(--accent);margin-bottom:18px;}
+  .hero h1{font-size:2.6rem;font-weight:800;line-height:1.2;max-width:760px;margin:0 auto 20px;}
+  .hero p.lead{font-size:1.15rem;color:#D8E2F0;max-width:620px;margin:0 auto 34px;}
+  .hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:14px 30px;border-radius:8px;font-weight:700;font-size:.98rem;transition:transform .15s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--accent);color:var(--navy-dark);}
+  .btn-secondary{background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.4);}
+
+  /* SECTIONS */
+  section{padding:80px 24px;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 50px;}
+  .section-head .eyebrow{color:var(--steel);}
+  .section-head h2{font-size:2rem;font-weight:800;color:var(--navy);margin-bottom:14px;}
+  .section-head p{color:var(--muted);font-size:1.05rem;}
+
+  /* SERVICES GRID */
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px;max-width:1120px;margin:0 auto;}
+  .service-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:28px 24px;text-align:left;}
+  .service-card .icon{width:44px;height:44px;border-radius:10px;background:var(--line);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:1.4rem;}
+  .service-card h3{font-size:1.08rem;color:var(--navy);margin-bottom:8px;}
+  .service-card p{color:var(--muted);font-size:.93rem;}
+
+  /* PACKAGES */
+  .packages-section{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .pkg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;max-width:1120px;margin:0 auto;align-items:stretch;}
+  .pkg-card{border:2px solid var(--line);border-radius:14px;padding:34px 28px;display:flex;flex-direction:column;background:var(--bg);}
+  .pkg-card.featured{border-color:var(--accent);background:var(--white);box-shadow:0 12px 30px rgba(31,56,100,0.1);position:relative;}
+  .pkg-card.featured::before{content:"Most Popular";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--navy-dark);font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;border-radius:20px;}
+  .pkg-name{font-size:1.2rem;font-weight:800;color:var(--navy);margin-bottom:6px;}
+  .pkg-price{font-size:2rem;font-weight:800;color:var(--ink);margin-bottom:2px;}
+  .pkg-price span{font-size:.95rem;font-weight:600;color:var(--muted);}
+  .pkg-renew{font-size:.85rem;color:var(--muted);margin-bottom:22px;}
+  .pkg-features{list-style:none;flex-grow:1;margin-bottom:26px;}
+  .pkg-features li{font-size:.92rem;color:var(--ink);padding:8px 0 8px 26px;position:relative;border-bottom:1px solid var(--line);}
+  .pkg-features li:last-child{border-bottom:none;}
+  .pkg-features li::before{content:"✓";position:absolute;left:0;top:8px;color:var(--steel);font-weight:800;}
+  .pkg-cta{text-align:center;background:var(--navy);color:var(--white);padding:12px;border-radius:8px;font-weight:700;font-size:.92rem;}
+  .pkg-card.featured .pkg-cta{background:var(--accent);color:var(--navy-dark);}
+  .pkg-cta:hover{opacity:.9;}
+  .pkg-note{text-align:center;color:var(--muted);font-size:.88rem;margin-top:30px;max-width:640px;margin-left:auto;margin-right:auto;}
+
+  /* WORK / PORTFOLIO */
+  .work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;max-width:1120px;margin:0 auto;}
+  .work-card{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  .work-thumb{height:150px;background:linear-gradient(135deg,var(--navy),var(--steel));display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:800;font-size:1.3rem;letter-spacing:.03em;}
+  .work-body{padding:22px 22px 26px;}
+  .work-body h3{color:var(--navy);font-size:1.08rem;margin-bottom:6px;}
+  .work-body p{color:var(--muted);font-size:.92rem;margin-bottom:14px;}
+  .work-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:20px;background:var(--line);color:var(--navy);margin-right:6px;margin-bottom:10px;}
+  .work-link{font-size:.88rem;font-weight:700;color:var(--steel);}
+  .work-card.coming .work-thumb{background:repeating-linear-gradient(135deg,var(--line),var(--line) 10px,#EEF2F7 10px,#EEF2F7 20px);color:var(--muted);}
+
+  /* ABOUT */
+  .about-section{background:var(--navy);color:var(--white);}
+  .about-inner{max-width:760px;margin:0 auto;text-align:center;}
+  .about-inner .eyebrow{color:var(--accent);}
+  .about-inner h2{font-size:2rem;font-weight:800;margin-bottom:20px;}
+  .about-inner p{color:#D8E2F0;font-size:1.05rem;margin-bottom:16px;}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;max-width:1000px;margin:0 auto;align-items:start;}
+  @media (max-width:800px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-form{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:32px;}
+  .contact-form label{display:block;font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:6px;margin-top:16px;}
+  .contact-form label:first-child{margin-top:0;}
+  .contact-form input,.contact-form textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:8px;font-size:.95rem;font-family:inherit;}
+  .contact-form textarea{min-height:110px;resize:vertical;}
+  .contact-form button{margin-top:22px;width:100%;background:var(--navy);color:var(--white);border:none;padding:14px;border-radius:8px;font-weight:700;font-size:.98rem;cursor:pointer;}
+  .contact-form button:hover{background:var(--navy-dark);}
+  .contact-side h3{color:var(--navy);font-size:1.1rem;margin-bottom:10px;}
+  .contact-side p{color:var(--muted);font-size:.95rem;margin-bottom:20px;}
+  .contact-fact{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start;}
+  .contact-fact .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:8px;flex-shrink:0;}
+
+  footer{background:var(--navy-dark);color:#B9C6D8;padding:40px 24px;text-align:center;font-size:.85rem;}
+  .footer-brand{display:flex;align-items:baseline;justify-content:center;gap:9px;margin-bottom:6px;}
+  .footer-mark{width:22px;height:22px;flex-shrink:0;align-self:center;}
+  .footer-mark svg{width:100%;height:100%;}
+  footer .footer-name{color:var(--white);font-weight:700;}
+  footer .footer-name .sub{font-size:.62em;font-weight:800;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-left:1px;}
+
+  /* CHAT WIDGET */
+  #cw-bubble{position:fixed;bottom:22px;right:22px;width:60px;height:60px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.25);z-index:999;font-size:1.6rem;}
+  #cw-panel{position:fixed;bottom:96px;right:22px;width:330px;max-width:90vw;height:440px;max-height:70vh;background:var(--white);border-radius:14px;box-shadow:0 16px 44px rgba(0,0,0,0.25);display:none;flex-direction:column;overflow:hidden;z-index:999;}
+  #cw-panel.open{display:flex;}
+  #cw-head{background:var(--navy);color:var(--white);padding:16px 18px;font-weight:700;font-size:.95rem;}
+  #cw-head span{display:block;font-weight:400;font-size:.78rem;color:#B9C6D8;margin-top:2px;}
+  #cw-messages{flex-grow:1;overflow-y:auto;padding:16px;background:#F4F7FA;}
+  .cw-msg{max-width:85%;padding:10px 13px;border-radius:10px;font-size:.87rem;margin-bottom:10px;line-height:1.45;}
+  .cw-msg.bot{background:var(--white);border:1px solid var(--line);color:var(--ink);}
+  .cw-msg.user{background:var(--navy);color:var(--white);margin-left:auto;}
+  .cw-topics{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+  .cw-topic-btn{background:var(--white);border:1px solid var(--steel);color:var(--steel);font-size:.78rem;padding:6px 11px;border-radius:20px;cursor:pointer;}
+  .cw-topic-btn:hover{background:var(--steel);color:var(--white);}
+  #cw-inputrow{display:flex;border-top:1px solid var(--line);padding:10px;gap:8px;background:var(--white);}
+  #cw-input{flex-grow:1;border:1px solid var(--line);border-radius:20px;padding:9px 14px;font-size:.87rem;}
+  #cw-send{background:var(--navy);color:var(--white);border:none;border-radius:20px;padding:9px 16px;font-size:.85rem;font-weight:700;cursor:pointer;}
+
+  @media (max-width:760px){
+    nav.main-nav{display:none;}
+    .mobile-toggle{display:block;}
+    .hero h1{font-size:2rem;}
+    section{padding:60px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <div class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M52 22 A20 20 0 1 0 52 50" fill="none" stroke="#1F3864" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="52" cy="22" r="5.5" fill="#C9A24B"/>
+        </svg>
+      </span>
+      <span>Clearline<span class="sub">Web</span></span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#services">What You Get</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Websites for Small Businesses · Warwickshire &amp; West Midlands</span>
+    <h1>A clean, professional website — built fast, priced fairly, and looked after all year round.</h1>
+    <p class="lead">Clearline Web designs simple, effective websites for local trades, shops and small businesses — with hosting, a business email address, and a built-in chat assistant all set up for you, no ongoing tech headaches.</p>
+    <div class="hero-ctas">
+      <a href="#packages" class="btn btn-primary">See Packages &amp; Pricing</a>
+      <a href="#work" class="btn btn-secondary">View Our Work</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What You Get</span>
+      <h2>Everything a small business needs — nothing it doesn't</h2>
+      <p>No bloated agency packages or confusing tech jargon. Just a clean site that works, set up properly from day one.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon">🖥️</div>
+        <h3>A Website That Looks the Part</h3>
+        <p>Clean, modern design built around your business — clear on mobile and desktop, fast to load, easy for customers to find what they need.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🌐</div>
+        <h3>Domain &amp; Hosting, Sorted</h3>
+        <p>We register your domain name and get it live on secure, reliable hosting — no separate accounts or bills to juggle.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">✉️</div>
+        <h3>A Proper Business Email</h3>
+        <p>A professional email address on your own domain (like you@yourbusiness.co.uk) instead of a personal Gmail address.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">💬</div>
+        <h3>Built-In Chat Assistant</h3>
+        <p>An FAQ chat bot answers common customer questions instantly, with the option to hand off to live chat when needed.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">📍</div>
+        <h3>Local Search Set Up</h3>
+        <p>Your site is built so people searching for your service in your area can actually find you on Google.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🔧</div>
+        <h3>Looked After All Year</h3>
+        <p>Your yearly plan covers hosting, your domain renewal, and small text or photo updates — no surprise bills.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="packages" class="packages-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Packages &amp; Pricing</span>
+      <h2>Simple, honest pricing</h2>
+      <p>One upfront fee to get you live, then a small yearly plan to keep everything running. No contracts, no hidden extras.</p>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-name">Starter</div>
+        <div class="pkg-price">£250 <span>one-off</span></div>
+        <div class="pkg-renew">then £60/year to keep it running</div>
+        <ul class="pkg-features">
+          <li>Single-page website, built around your business</li>
+          <li>FAQ chat bot for common customer questions</li>
+          <li>Contact form</li>
+          <li>Domain name &amp; secure hosting, set up for you</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Get Started</a>
+      </div>
+      <div class="pkg-card featured">
+        <div class="pkg-name">Standard</div>
+        <div class="pkg-price">£400 <span>one-off</span></div>
+        <div class="pkg-renew">then £100/year to keep it running</div>
+        <ul class="pkg-features">
+          <li>Up to 4 pages (Home, Services, About, Contact)</li>
+          <li>FAQ chat bot + live chat option</li>
+          <li>Contact form</li>
+          <li>Domain, hosting &amp; a professional business email address</li>
+          <li>Basic local SEO, so you show up in local searches</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Get Started</a>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-name">Premium</div>
+        <div class="pkg-price">From £600 <span>one-off</span></div>
+        <div class="pkg-renew">then £150/year to keep it running</div>
+        <ul class="pkg-features">
+          <li>Multi-page site, tailored fully to your business</li>
+          <li>Live chat + FAQ chat bot</li>
+          <li>Professional branded email</li>
+          <li>Local SEO with structured data to help Google understand your business</li>
+          <li>One free content update every quarter</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Get Started</a>
+      </div>
+    </div>
+    <p class="pkg-note">Your yearly plan covers hosting, domain renewal, your business email, and up to 3 small updates a year — things like a text change, a phone number, or swapping a photo. Bigger changes — new pages, a redesign, extra features — are always quoted separately before any work starts. Your domain name is registered in your business's name, not ours, so it's always yours to keep.</p>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Our Work</span>
+      <h2>Real sites, for real local businesses</h2>
+      <p>Every Clearline Web site is built the same careful way — here's an example already live.</p>
+    </div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-thumb">D3D</div>
+        <div class="work-body">
+          <span class="work-tag">Mechanical, Ventilation &amp; Plumbing Design</span>
+          <h3>D3D Design &amp; Drafting Services</h3>
+          <p>A full multi-page site with services, capability, a free tools page, live chat and an FAQ bot — built for a Warwickshire-based MEP design consultancy.</p>
+          <a href="https://d3ddesign.co.uk" target="_blank" rel="noopener" class="work-link">View live site →</a>
+        </div>
+      </div>
+      <div class="work-card coming">
+        <div class="work-thumb">Coming Soon</div>
+        <div class="work-body">
+          <span class="work-tag">Retail / Product</span>
+          <h3>Made With Love</h3>
+          <p>A one-page site for a local artificial flower arrangement business — currently in progress, launching soon.</p>
+          <span class="work-link" style="color:var(--muted);">Launching soon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-section">
+  <div class="wrap about-inner">
+    <span class="eyebrow">About Clearline Web</span>
+    <h2>Run personally, built properly</h2>
+    <p>Clearline Web is a small, independent web design service — every site is planned, built and looked after personally, not handed off to a call centre or a template mill.</p>
+    <p>It's run alongside D3D Design &amp; Drafting Services, a Warwickshire-based mechanical, ventilation &amp; plumbing design consultancy — so every Clearline Web site is built with the same care and attention to detail that goes into a full technical drawing set.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Get In Touch</span>
+      <h2>Tell us about your business</h2>
+      <p>Get a straightforward quote — no obligation, no hard sell.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form" id="cw-contact-form">
+        <label for="cf-name">Your Name</label>
+        <input type="text" id="cf-name" name="name" required>
+        <label for="cf-business">Business Name</label>
+        <input type="text" id="cf-business" name="business">
+        <label for="cf-email">Email</label>
+        <input type="email" id="cf-email" name="email" required>
+        <label for="cf-message">What do you need?</label>
+        <textarea id="cf-message" name="message" placeholder="Tell us a bit about your business and what kind of website you're after..."></textarea>
+        <button type="submit">Send Enquiry</button>
+      </form>
+      <div class="contact-side">
+        <h3>What happens next?</h3>
+        <div class="contact-fact"><span class="dot"></span><p style="margin:0;">We reply within a day or two with a straightforward quote based on the package that fits your business.</p></div>
+        <div class="contact-fact"><span class="dot"></span><p style="margin:0;">No obligation — if it's not the right fit, no hard sell, no pressure.</p></div>
+        <div class="contact-fact"><span class="dot"></span><p style="margin:0;">Most simple sites are live within 1-2 weeks of getting started.</p></div>
+        <div class="contact-fact"><span class="dot"></span><p style="margin:0;">Your domain is registered in your business's name — it's always yours, even if you ever move on from Clearline Web.</p></div>
+        <h3 style="margin-top:26px;">Prefer to just ask a question?</h3>
+        <p>Use the chat bubble in the corner — it can answer most common questions instantly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <span class="footer-mark">
+      <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M52 22 A20 20 0 1 0 52 50" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="52" cy="22" r="5.5" fill="#C9A24B"/>
+      </svg>
+    </span>
+    <div class="footer-name">Clearline<span class="sub">Web</span></div>
+  </div>
+  <p>Clean, professional websites for small businesses across Warwickshire &amp; the West Midlands.</p>
+</footer>
+
+<div id="cw-bubble">💬</div>
+<div id="cw-panel">
+  <div id="cw-head">Clearline Web Assistant<span>Usually replies in a few hours</span></div>
+  <div id="cw-messages"></div>
+  <div id="cw-inputrow">
+    <input type="text" id="cw-input" placeholder="Ask a question...">
+    <button id="cw-send">Send</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var bubble = document.getElementById('cw-bubble');
+  var panel = document.getElementById('cw-panel');
+  var messages = document.getElementById('cw-messages');
+  var input = document.getElementById('cw-input');
+  var sendBtn = document.getElementById('cw-send');
+
+  var KB = [
+    { topic: "Pricing", keys: ["price","cost","how much","pricing","fee"], a: "Sites start from £250 one-off (Starter), £400 for Standard, and from £600 for Premium — each with a small yearly plan afterwards (£60-£150/yr) to keep hosting, your domain and email running. See the Packages section above for full details." },
+    { topic: "How long it takes", keys: ["long","time","when","how soon","turnaround"], a: "Most simple sites are live within 1-2 weeks of getting started, once we've got your content and any photos." },
+    { topic: "What's included", keys: ["include","what do i get","whats included","get"], a: "Every package includes your website build, domain name registration, secure hosting, and an FAQ chat bot. Standard and Premium also include a professional business email address and local SEO." },
+    { topic: "Hosting & renewals", keys: ["hosting","renew","yearly","ongoing","maintenance"], a: "Your yearly plan covers hosting, domain renewal, your business email, and up to 3 small updates a year (a text change, a phone number, a photo swap). Bigger changes are always quoted separately first — no surprise bills." },
+    { topic: "Who owns the domain?", keys: ["own","ownership","domain name","who owns"], a: "You do. Your domain is registered in your business's name, not ours — so it's always yours to keep, even if you ever move your site elsewhere." },
+    { topic: "Making changes later", keys: ["change","update","edit","swap a photo","new page"], a: "Just get in touch and tell us what you'd like changed — small updates are included in your yearly plan, and anything bigger gets a quick, no-surprises quote first." },
+    { topic: "Get a quote", keys: ["quote","contact","enquire","start","get started"], a: "Just fill in the form above with a bit about your business, or email us directly — we'll reply within a day or two with a straightforward quote." }
+  ];
+
+  function addMsg(text, who){
+    var d = document.createElement('div');
+    d.className = 'cw-msg ' + who;
+    d.textContent = text;
+    messages.appendChild(d);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function showTopics(){
+    var wrap = document.createElement('div');
+    wrap.className = 'cw-topics';
+    KB.forEach(function(item){
+      var b = document.createElement('button');
+      b.className = 'cw-topic-btn';
+      b.textContent = item.topic;
+      b.addEventListener('click', function(){
+        addMsg(item.topic, 'user');
+        addMsg(item.a, 'bot');
+      });
+      wrap.appendChild(b);
+    });
+    messages.appendChild(wrap);
+  }
+
+  function handleFreeText(text){
+    var lower = text.toLowerCase();
+    var match = KB.find(function(item){
+      return item.keys.some(function(k){ return lower.indexOf(k) !== -1; });
+    });
+    if (match) {
+      addMsg(match.a, 'bot');
+    } else {
+      addMsg("Good question — I don't have a set answer for that, but send it through the form above and we'll get back to you personally within a day or two.", 'bot');
+    }
+  }
+
+  bubble.addEventListener('click', function(){
+    panel.classList.toggle('open');
+    if (panel.classList.contains('open') && messages.children.length === 0) {
+      addMsg("Hi! I'm the Clearline Web assistant. Ask me about pricing, timelines, or what's included — or pick a topic below.", 'bot');
+      showTopics();
+    }
+  });
+
+  sendBtn.addEventListener('click', function(){
+    var val = input.value.trim();
+    if (!val) return;
+    addMsg(val, 'user');
+    input.value = '';
+    handleFreeText(val);
+  });
+  input.addEventListener('keydown', function(e){ if (e.key === 'Enter') sendBtn.click(); });
+
+  document.getElementById('cw-contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('cf-name').value;
+    var email = document.getElementById('cf-email').value;
+    var business = document.getElementById('cf-business').value;
+    var message = document.getElementById('cf-message').value;
+    var subject = encodeURIComponent('Website enquiry from ' + name + (business ? ' (' + business + ')' : ''));
+    var body = encodeURIComponent(message + '\n\nReply to: ' + email);
+    window.location.href = 'mailto:hello@clearlineweb.co.uk?subject=' + subject + '&body=' + body;
+  });
+})();
+</script>
+
+</body>
+</html>
