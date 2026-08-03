@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact & Booking | Willowbrook Hair & Beauty Studio</title>
+<meta name="description" content="Get in touch with Willowbrook Hair & Beauty Studio to book your next hair or beauty appointment in the local area.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plum-dark:#4a2438; --plum:#7a4064; --blush:#f6e6e9; --gold:#c9a06a;
+    --cream:#fbf7f5; --card:#ffffff; --ink:#3a2733; --ink-soft:#82707c; --radius:12px; --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  h1,h2,h3{font-family:'Playfair Display',Georgia,serif;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  #demo-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--gold);color:#3a2a05;text-align:center;padding:9px 14px;font-size:13.5px;font-weight:700;}
+  #demo-banner button{margin-left:12px;background:rgba(0,0,0,.12);border:none;border-radius:4px;padding:3px 9px;font-weight:700;cursor:pointer;font-size:12px;}
+  body{padding-top:38px;}
+
+  header.nav{position:sticky;top:38px;z-index:80;background:rgba(251,247,245,.95);border-bottom:1px solid #ecdfe2;backdrop-filter:blur(6px);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--maxw);margin:0 auto;gap:16px;}
+  .logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--plum-dark);text-decoration:none;}
+  nav.links{display:flex;gap:26px;font-size:14.5px;font-weight:600;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);}
+  nav.links a:hover,nav.links a.active{color:var(--plum-dark);}
+  .nav-cta{background:var(--plum-dark);color:#fff;padding:10px 20px;border-radius:24px;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;}
+
+  .page-hero{background:linear-gradient(155deg,var(--blush) 0%,var(--cream) 100%);border-bottom:1px solid #ecdfe2;padding:54px 0 50px;text-align:center;}
+  .page-hero h1{font-size:2.5rem;color:var(--plum-dark);margin-bottom:10px;}
+  .page-hero p{color:var(--ink-soft);font-size:1.05rem;max-width:620px;margin:0 auto;}
+
+  .hero{background:linear-gradient(155deg,var(--blush) 0%,var(--cream) 60%);padding:64px 0 58px;border-bottom:1px solid #ecdfe2;}
+  .hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--plum-dark);background:rgba(122,64,100,.1);padding:6px 14px;border-radius:18px;margin-bottom:16px;}
+  h1{font-size:2.9rem;line-height:1.15;color:var(--plum-dark);margin-bottom:14px;font-weight:700;}
+  .hero p.lead{font-size:1.08rem;color:var(--ink-soft);max-width:46ch;margin-bottom:26px;}
+  .btn{display:inline-block;padding:13px 26px;border-radius:26px;font-weight:700;text-decoration:none;font-size:14.5px;border:none;cursor:pointer;}
+  .btn-primary{background:var(--plum-dark);color:#fff;}
+  .btn-secondary{background:#fff;color:var(--plum-dark);border:1.5px solid var(--plum-dark);}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+  .ph{aspect-ratio:4/3;border-radius:var(--radius);background:linear-gradient(135deg,var(--plum) 0%,#c98fa8 55%,var(--gold) 130%);display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px rgba(74,36,56,.22);}
+  .ph span{font-size:3.2rem;}
+  .ph.sm{aspect-ratio:1/1;border-radius:50%;}
+
+  section{padding:66px 0;}
+  .section-head{max-width:620px;margin:0 auto 40px;text-align:center;}
+  .section-head h2{font-size:2rem;color:var(--plum-dark);margin-bottom:12px;}
+  .section-head p{color:var(--ink-soft);}
+
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;}
+  .svc-card{background:var(--card);border:1px solid #ecdfe2;border-radius:var(--radius);padding:26px 22px;text-align:center;transition:box-shadow .15s,transform .15s;}
+  .svc-card:hover{box-shadow:0 14px 30px rgba(74,36,56,.1);transform:translateY(-3px);}
+  .svc-card .ic{font-size:1.9rem;margin-bottom:10px;}
+  .svc-card h3{font-size:1.1rem;margin-bottom:6px;color:var(--plum-dark);}
+  .svc-card p{font-size:.88rem;color:var(--ink-soft);}
+
+  .price-group{margin-bottom:38px;}
+  .price-group h3{font-size:1.3rem;color:var(--plum-dark);margin-bottom:16px;border-bottom:2px solid var(--blush);padding-bottom:8px;}
+  .price-row{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px dashed #ecdfe2;font-size:.95rem;}
+  .price-row .pname{font-weight:600;}
+  .price-row .pdesc{color:var(--ink-soft);font-size:.82rem;display:block;margin-top:2px;font-weight:400;}
+  .price-row .pval{font-weight:700;color:var(--plum-dark);white-space:nowrap;}
+
+  .why{background:linear-gradient(135deg,var(--blush),#f3ecec);}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+  .why-item{background:rgba(255,255,255,.6);border-radius:var(--radius);padding:24px 16px;}
+  .why-item .wi{font-size:1.7rem;margin-bottom:8px;}
+  .why-item h4{font-size:.95rem;margin-bottom:5px;font-family:'Poppins',sans-serif;font-weight:700;}
+  .why-item p{font-size:.82rem;color:var(--ink-soft);}
+
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;}
+  .team-card{text-align:center;}
+  .team-card .ph.sm{margin:0 auto 14px;width:140px;}
+  .team-card h4{font-size:1.05rem;color:var(--plum-dark);margin-bottom:3px;}
+  .team-card p{font-size:.85rem;color:var(--ink-soft);}
+
+  .about-copy{max-width:720px;margin:0 auto;text-align:center;}
+  .about-copy p{color:var(--ink-soft);margin-bottom:14px;font-size:1.02rem;}
+
+  .quote{background:var(--card);border-top:1px solid #ecdfe2;border-bottom:1px solid #ecdfe2;text-align:center;}
+  .quote blockquote{max-width:640px;margin:0 auto;font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--plum-dark);font-style:italic;}
+  .quote .who{margin-top:14px;font-size:.85rem;color:var(--ink-soft);font-weight:600;}
+
+  .cta{background:var(--plum-dark);color:#fdf7f9;text-align:center;}
+  .cta h2{color:#fff;margin-bottom:12px;}
+  .cta p{color:#e6d3db;max-width:520px;margin:0 auto 24px;}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+  .info-card{background:var(--card);border:1px solid #ecdfe2;border-radius:var(--radius);padding:28px;}
+  .info-row{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #f3ecee;}
+  .info-row:last-child{border-bottom:none;}
+  .info-row .ic{font-size:18px;}
+  .info-row .label{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);font-weight:700;}
+  .info-row .val{font-size:14.5px;font-weight:600;color:var(--ink);}
+  .contact-form{background:var(--card);border:1px solid #ecdfe2;border-radius:var(--radius);padding:28px;}
+  .contact-form label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;margin-top:14px;}
+  .contact-form label:first-child{margin-top:0;}
+  .contact-form input,.contact-form textarea{width:100%;padding:11px 13px;border-radius:8px;border:1px solid #ecdfe2;background:#fff;font-family:inherit;font-size:14px;}
+  .contact-form textarea{min-height:100px;resize:vertical;}
+  .contact-form button{margin-top:18px;width:100%;}
+
+  footer{background:#2c1622;color:#c9b3bd;padding:30px 0;font-size:13px;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-inner .brand{color:#fff;font-family:'Playfair Display',serif;font-size:1.15rem;}
+  .footer-inner .flinks a{color:#c9b3bd;text-decoration:none;margin-left:16px;}
+  .footer-inner .flinks a:hover{color:#fff;}
+  .demo-tag{color:var(--gold);font-weight:700;text-align:center;padding-top:10px;font-size:12px;}
+
+  #cb-launcher{position:fixed;bottom:22px;right:22px;z-index:200;width:60px;height:60px;border-radius:50%;background:var(--plum-dark);color:#fff;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(74,36,56,.35);font-size:26px;display:flex;align-items:center;justify-content:center;}
+  #cb-launcher .close-ic{display:none;}
+  #cb-launcher.open .chat-ic{display:none;}
+  #cb-launcher.open .close-ic{display:block;}
+  #cb-panel{position:fixed;bottom:94px;right:22px;z-index:200;width:340px;max-width:calc(100vw - 32px);background:#fffdfc;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(74,36,56,.3);border:1px solid #ecdfe2;display:none;flex-direction:column;height:500px;max-height:calc(100vh - 150px);}
+  #cb-panel.open{display:flex;}
+  .cb-head{background:var(--plum-dark);color:#fff;padding:16px 18px;display:flex;align-items:center;gap:10px;}
+  .cb-head .dot{width:9px;height:9px;border-radius:50%;background:#8fd0a0;}
+  .cb-head .t1{font-weight:800;font-size:14px;}
+  .cb-head .t2{font-size:11px;color:#e6d3db;}
+  .cb-body{flex:1;overflow-y:auto;padding:16px;background:#fbf5f6;display:flex;flex-direction:column;gap:10px;}
+  .cb-msg{max-width:85%;padding:10px 13px;border-radius:12px;font-size:13.5px;line-height:1.45;}
+  .cb-msg.bot{background:#fff;border:1px solid #ecdfe2;align-self:flex-start;}
+  .cb-msg.user{background:var(--plum-dark);color:#fff;align-self:flex-end;}
+  .cb-quick{display:flex;flex-wrap:wrap;gap:7px;}
+  .cb-quick button{background:#fff;border:1.3px solid var(--plum-dark);color:var(--plum-dark);font-size:12px;font-weight:700;padding:7px 11px;border-radius:16px;cursor:pointer;}
+  .cb-live{border-top:1px solid #ecdfe2;padding:10px 14px;background:#fff;}
+  .cb-live button{width:100%;background:var(--gold);color:#3a2a05;border:none;border-radius:20px;padding:10px;font-weight:700;font-size:13px;cursor:pointer;}
+  .cb-note{font-size:10px;color:var(--ink-soft);text-align:center;padding:6px 10px 0;background:#fff;}
+
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr;}
+    .ph{order:-1;max-width:400px;margin:0 auto;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    nav.links{display:none;}
+  }
+  @media(max-width:560px){
+    h1{font-size:2.2rem;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .nav-cta{display:none;}
+    #cb-panel{right:16px;left:16px;width:auto;bottom:88px;}
+    #cb-launcher{right:16px;bottom:16px;}
+  }
+</style>
+</head>
+<body>
+
+<div id="demo-banner">DEMO — Standard Package example, for illustration only<button onclick="document.getElementById('demo-banner').style.display='none';document.body.style.paddingTop='0';document.querySelector('header.nav').style.top='0';">Hide</button></div>
+
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="standard-demo-index.html" class="logo">Willowbrook</a>
+    <nav class="links">
+      <a href="standard-demo-index.html">Home</a>
+      <a href="standard-demo-services.html">Services</a>
+      <a href="standard-demo-about.html">About</a>
+      <a href="standard-demo-contact.html" class="active">Contact</a>
+    </nav>
+    <a href="standard-demo-contact.html" class="nav-cta">Book Now</a>
+  </div>
+</header>
+
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Get In Touch</span>
+    <h1>Book Your Appointment</h1>
+    <p>Message us using the form below, or reach out directly — we'll reply within a day or two.</p>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap contact-grid">
+    <div class="info-card">
+      <div class="info-row"><span class="ic">&#128231;</span><div><div class="label">Email</div><div class="val">hello@example.co.uk</div></div></div>
+      <div class="info-row"><span class="ic">&#128222;</span><div><div class="label">Phone</div><div class="val">01234 567 890</div></div></div>
+      <div class="info-row"><span class="ic">&#128205;</span><div><div class="label">Studio</div><div class="val">Local area &mdash; exact address on booking</div></div></div>
+      <div class="info-row"><span class="ic">&#128337;</span><div><div class="label">Opening Hours</div><div class="val">Tue&ndash;Sat, 9am&ndash;5:30pm</div></div></div>
+    </div>
+    <form class="contact-form" id="wb-form">
+      <label for="wf-name">Your Name</label>
+      <input type="text" id="wf-name" required>
+      <label for="wf-email">Email</label>
+      <input type="email" id="wf-email" required>
+      <label for="wf-message">What would you like to book?</label>
+      <textarea id="wf-message" placeholder="Treatment, preferred day/time..."></textarea>
+      <button type="submit" class="btn btn-primary">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+<script>
+document.getElementById('wb-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('wf-name').value;
+  var email = document.getElementById('wf-email').value;
+  var message = document.getElementById('wf-message').value;
+  var subject = encodeURIComponent('Booking enquiry from ' + name);
+  var body = encodeURIComponent(message + '\n\nReply to: ' + email);
+  window.location.href = 'mailto:hello@example.co.uk?subject=' + subject + '&body=' + body;
+});
+</script>
+
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="brand">Willowbrook</div>
+    <div>Hair &amp; Beauty Studio</div>
+    <div class="flinks">
+      <a href="standard-demo-index.html">Home</a><a href="standard-demo-services.html">Services</a><a href="standard-demo-about.html">About</a><a href="standard-demo-contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="demo-tag">Clearline Web — Standard Package demo</div>
+</footer>
+
+
+<button id="cb-launcher" aria-label="Open chat">
+  <span class="chat-ic">&#128172;</span>
+  <span class="close-ic">&#10005;</span>
+</button>
+<div id="cb-panel">
+  <div class="cb-head"><span class="dot"></span><div><div class="t1">Willowbrook</div><div class="t2">Quick answers, or message us directly</div></div></div>
+  <div class="cb-body" id="cb-body"></div>
+  <div class="cb-live"><button id="cb-live-btn">&#128172; Talk to a real person</button></div>
+  <div class="cb-note">Quick-answers are automated. "Talk to a real person" connects you live during opening hours.</div>
+</div>
+
+<script>
+(function(){
+  var KB = [
+    { keys: ["price","cost","how much"], a: "Prices vary by treatment — see our Services page for the full price list, or ask here about something specific." },
+    { keys: ["book","appointment","available","when"], a: "You can book by messaging us directly here, or through the Contact page — we'll confirm a time that suits you." },
+    { keys: ["bridal","wedding"], a: "We offer bridal trials and on-the-day packages — get in touch to check availability for your date." },
+    { keys: ["cancel","reschedule"], a: "Just message us as early as you can and we'll happily rearrange your appointment." },
+    { keys: ["product","brand"], a: "We use trusted, professional-grade products across all our hair and beauty treatments." },
+    { keys: ["email","contact"], a: "You can reach us anytime at hello@example.co.uk, or use the form on our Contact page." }
+  ];
+  var FALLBACK = "Good question — tap \u201cTalk to a real person\u201d below and we'll get back to you directly.";
+  var launcher = document.getElementById('cb-launcher');
+  var panel = document.getElementById('cb-panel');
+  var body = document.getElementById('cb-body');
+  var greeted = false;
+
+  function addMsg(text, who){
+    var d = document.createElement('div');
+    d.className = 'cb-msg ' + who;
+    d.textContent = text;
+    body.appendChild(d);
+    body.scrollTop = body.scrollHeight;
+  }
+  function addQuick(){
+    var wrap = document.createElement('div');
+    wrap.className = 'cb-quick';
+    [["Prices","price"],["Book an appointment","book"],["Bridal packages","bridal"],["Cancellations","cancel"]].forEach(function(pair){
+      var b = document.createElement('button');
+      b.textContent = pair[0];
+      b.addEventListener('click', function(){ handleQuery(pair[1]); });
+      wrap.appendChild(b);
+    });
+    body.appendChild(wrap);
+    body.scrollTop = body.scrollHeight;
+  }
+  function handleQuery(q){
+    var lower = q.toLowerCase();
+    var hit = KB.filter(function(k){ return k.keys.some(function(kw){ return lower.indexOf(kw) !== -1; }); })[0];
+    addMsg(hit ? hit.a : FALLBACK, 'bot');
+  }
+  launcher.addEventListener('click', function(){
+    var open = panel.classList.toggle('open');
+    launcher.classList.toggle('open', open);
+    if (open && !greeted){
+      greeted = true;
+      addMsg("Hi! I'm the Willowbrook assistant. Ask about prices, booking, or bridal packages \u2014 or talk to a real person below.", 'bot');
+      addQuick();
+    }
+  });
+  document.getElementById('cb-live-btn').addEventListener('click', function(){
+    window.location.href = 'standard-demo-contact.html';
+  });
+})();
+</script>
+
+</body>
+</html>

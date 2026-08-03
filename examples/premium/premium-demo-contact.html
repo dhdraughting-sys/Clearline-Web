@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact & Quotes | Ferncroft Landscaping & Garden Design</title>
+<meta name="description" content="Get a free landscaping quote from Ferncroft Landscaping & Garden Design — get in touch to talk about your garden.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --forest-dark:#1f3423; --forest:#2f4d33; --sage:#8fa878; --terracotta:#c1683f;
+    --cream:#f8f6ee; --card:#ffffff; --ink:#26301f; --ink-soft:#697360; --radius:12px; --maxw:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  #demo-banner{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--terracotta);color:#fff;text-align:center;padding:9px 14px;font-size:13.5px;font-weight:700;}
+  #demo-banner button{margin-left:12px;background:rgba(255,255,255,.2);border:none;border-radius:4px;padding:3px 9px;font-weight:700;cursor:pointer;font-size:12px;color:#fff;}
+  body{padding-top:38px;}
+
+  header.nav{position:sticky;top:38px;z-index:80;background:rgba(248,246,238,.95);border-bottom:1px solid #e4e1d2;backdrop-filter:blur(6px);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--maxw);margin:0 auto;gap:16px;}
+  .logo{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;color:var(--forest-dark);text-decoration:none;}
+  nav.links{display:flex;gap:24px;font-size:14.5px;font-weight:600;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);}
+  nav.links a:hover,nav.links a.active{color:var(--forest-dark);}
+  .nav-cta{background:var(--forest-dark);color:#fff;padding:10px 20px;border-radius:24px;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;}
+
+  .page-hero{background:linear-gradient(155deg,#e9ecdf 0%,var(--cream) 100%);border-bottom:1px solid #e4e1d2;padding:54px 0 50px;text-align:center;}
+  .page-hero h1{font-size:2.5rem;color:var(--forest-dark);margin-bottom:10px;}
+  .page-hero p{color:var(--ink-soft);font-size:1.05rem;max-width:640px;margin:0 auto;}
+
+  .hero{background:linear-gradient(155deg,#e9ecdf 0%,var(--cream) 60%);padding:64px 0 58px;border-bottom:1px solid #e4e1d2;}
+  .hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--forest-dark);background:rgba(47,77,51,.1);padding:6px 14px;border-radius:18px;margin-bottom:16px;}
+  h1{font-size:2.9rem;line-height:1.15;color:var(--forest-dark);margin-bottom:14px;font-weight:700;}
+  .hero p.lead{font-size:1.08rem;color:var(--ink-soft);max-width:48ch;margin-bottom:26px;}
+  .btn{display:inline-block;padding:13px 26px;border-radius:26px;font-weight:700;text-decoration:none;font-size:14.5px;border:none;cursor:pointer;}
+  .btn-primary{background:var(--forest-dark);color:#fff;}
+  .btn-secondary{background:#fff;color:var(--forest-dark);border:1.5px solid var(--forest-dark);}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+  .ph{aspect-ratio:4/3;border-radius:var(--radius);background:linear-gradient(135deg,var(--forest) 0%,var(--sage) 55%,var(--terracotta) 135%);display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px rgba(31,52,35,.22);}
+  .ph span{font-size:3.2rem;}
+
+  section{padding:66px 0;}
+  .section-head{max-width:640px;margin:0 auto 40px;text-align:center;}
+  .section-head h2{font-size:2rem;color:var(--forest-dark);margin-bottom:12px;}
+  .section-head p{color:var(--ink-soft);}
+
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;}
+  .svc-card{background:var(--card);border:1px solid #e4e1d2;border-radius:var(--radius);padding:26px 22px;transition:box-shadow .15s,transform .15s;}
+  .svc-card:hover{box-shadow:0 14px 30px rgba(31,52,35,.1);transform:translateY(-3px);}
+  .svc-card .ic{font-size:1.9rem;margin-bottom:10px;}
+  .svc-card h3{font-size:1.1rem;margin-bottom:6px;color:var(--forest-dark);}
+  .svc-card p{font-size:.88rem;color:var(--ink-soft);}
+
+  .why{background:linear-gradient(135deg,#e9ecdf,#f1efe3);}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+  .why-item{background:rgba(255,255,255,.65);border-radius:var(--radius);padding:24px 16px;}
+  .why-item .wi{font-size:1.7rem;margin-bottom:8px;}
+  .why-item h4{font-size:.95rem;margin-bottom:5px;font-weight:700;}
+  .why-item p{font-size:.82rem;color:var(--ink-soft);}
+
+  .promise{background:var(--card);border-top:1px solid #e4e1d2;border-bottom:1px solid #e4e1d2;}
+  .promise .wrap{max-width:780px;text-align:center;}
+  .promise p{color:var(--ink-soft);margin-bottom:12px;font-size:1.02rem;}
+  .seo-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(47,77,51,.08);border:1px solid rgba(47,77,51,.2);color:var(--forest-dark);font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;margin-top:14px;}
+
+  .about-copy{max-width:720px;margin:0 auto;text-align:center;}
+  .about-copy p{color:var(--ink-soft);margin-bottom:14px;font-size:1.02rem;}
+
+  .quote{background:var(--card);border-top:1px solid #e4e1d2;border-bottom:1px solid #e4e1d2;text-align:center;}
+  .quote blockquote{max-width:640px;margin:0 auto;font-family:'Fraunces',serif;font-size:1.3rem;color:var(--forest-dark);font-style:italic;}
+  .quote .who{margin-top:14px;font-size:.85rem;color:var(--ink-soft);font-weight:600;}
+
+  .cta{background:var(--forest-dark);color:#f3f6ee;text-align:center;}
+  .cta h2{color:#fff;margin-bottom:12px;}
+  .cta p{color:#d3ddc9;max-width:520px;margin:0 auto 24px;}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+  .info-card{background:var(--card);border:1px solid #e4e1d2;border-radius:var(--radius);padding:28px;}
+  .info-row{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #eeece0;}
+  .info-row:last-child{border-bottom:none;}
+  .info-row .ic{font-size:18px;}
+  .info-row .label{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);font-weight:700;}
+  .info-row .val{font-size:14.5px;font-weight:600;color:var(--ink);}
+  .contact-form{background:var(--card);border:1px solid #e4e1d2;border-radius:var(--radius);padding:28px;}
+  .contact-form label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;margin-top:14px;}
+  .contact-form label:first-child{margin-top:0;}
+  .contact-form input,.contact-form textarea{width:100%;padding:11px 13px;border-radius:8px;border:1px solid #e4e1d2;background:#fff;font-family:inherit;font-size:14px;}
+  .contact-form textarea{min-height:100px;resize:vertical;}
+  .contact-form button{margin-top:18px;width:100%;}
+
+  footer{background:#16241a;color:#b7c2ac;padding:30px 0;font-size:13px;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-inner .brand{color:#fff;font-family:'Fraunces',serif;font-size:1.15rem;}
+  .footer-inner .flinks a{color:#b7c2ac;text-decoration:none;margin-left:16px;}
+  .footer-inner .flinks a:hover{color:#fff;}
+  .demo-tag{color:var(--terracotta);font-weight:700;text-align:center;padding-top:10px;font-size:12px;}
+
+  .gallery-filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:38px;}
+  .filter-btn{background:#fff;border:1.5px solid var(--forest-dark);color:var(--forest-dark);font-size:14px;font-weight:700;padding:9px 20px;border-radius:22px;cursor:pointer;transition:background .15s,color .15s;}
+  .filter-btn:hover{background:rgba(47,77,51,.08);}
+  .filter-btn.active{background:var(--forest-dark);color:#fff;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px;}
+  .gallery-card{background:var(--card);border:1px solid #e4e1d2;border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:box-shadow .15s,transform .15s;position:relative;}
+  .gallery-card:hover{box-shadow:0 14px 34px rgba(31,52,35,.14);transform:translateY(-3px);}
+  .gallery-card .g-photo{aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .gallery-card .g-photo .g-icon{font-size:2.6rem;}
+  .gallery-card .g-cap{padding:12px 14px;font-size:.85rem;color:var(--ink-soft);font-weight:600;}
+  .gallery-card .g-tag{position:absolute;top:10px;left:10px;background:rgba(22,36,26,.75);color:#f3f6ee;font-size:11px;font-weight:700;letter-spacing:.03em;padding:4px 10px;border-radius:12px;}
+  .gallery-empty{text-align:center;color:var(--ink-soft);font-size:1.02rem;padding:40px 20px;}
+  .gallery-empty .ge-icon{font-size:2.4rem;display:block;margin-bottom:12px;}
+
+  .lightbox{display:none;position:fixed;inset:0;z-index:500;background:rgba(15,22,16,.92);align-items:center;justify-content:center;padding:40px;}
+  .lightbox.open{display:flex;}
+  .lightbox-inner{max-width:min(760px,90vw);max-height:86vh;text-align:center;}
+  .lightbox-inner .lb-photo{width:min(560px,80vw);aspect-ratio:4/3;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;margin:0 auto;}
+  .lightbox-inner .lb-photo .g-icon{font-size:4.4rem;}
+  .lightbox-cap{color:#f3f6ee;margin-top:16px;font-size:.95rem;}
+  .lightbox-close{position:absolute;top:20px;right:28px;background:rgba(255,255,255,.12);border:none;color:#fff;width:42px;height:42px;border-radius:50%;font-size:22px;cursor:pointer;line-height:1;}
+  .lightbox-close:hover{background:rgba(255,255,255,.24);}
+  .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer;}
+  .lightbox-nav:hover{background:rgba(255,255,255,.24);}
+  .lightbox-prev{left:24px;}
+  .lightbox-next{right:24px;}
+
+  #cb-launcher{position:fixed;bottom:22px;right:22px;z-index:200;width:60px;height:60px;border-radius:50%;background:var(--forest-dark);color:#fff;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(31,52,35,.35);font-size:26px;display:flex;align-items:center;justify-content:center;}
+  #cb-launcher .close-ic{display:none;}
+  #cb-launcher.open .chat-ic{display:none;}
+  #cb-launcher.open .close-ic{display:block;}
+  #cb-panel{position:fixed;bottom:94px;right:22px;z-index:200;width:340px;max-width:calc(100vw - 32px);background:#fffdf9;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(31,52,35,.3);border:1px solid #e4e1d2;display:none;flex-direction:column;height:500px;max-height:calc(100vh - 150px);}
+  #cb-panel.open{display:flex;}
+  .cb-head{background:var(--forest-dark);color:#fff;padding:16px 18px;display:flex;align-items:center;gap:10px;}
+  .cb-head .dot{width:9px;height:9px;border-radius:50%;background:#8fd0a0;}
+  .cb-head .t1{font-weight:800;font-size:14px;}
+  .cb-head .t2{font-size:11px;color:#d3ddc9;}
+  .cb-body{flex:1;overflow-y:auto;padding:16px;background:#f6f5ea;display:flex;flex-direction:column;gap:10px;}
+  .cb-msg{max-width:85%;padding:10px 13px;border-radius:12px;font-size:13.5px;line-height:1.45;}
+  .cb-msg.bot{background:#fff;border:1px solid #e4e1d2;align-self:flex-start;}
+  .cb-msg.user{background:var(--forest-dark);color:#fff;align-self:flex-end;}
+  .cb-quick{display:flex;flex-wrap:wrap;gap:7px;}
+  .cb-quick button{background:#fff;border:1.3px solid var(--forest-dark);color:var(--forest-dark);font-size:12px;font-weight:700;padding:7px 11px;border-radius:16px;cursor:pointer;}
+  .cb-live{border-top:1px solid #e4e1d2;padding:10px 14px;background:#fff;}
+  .cb-live button{width:100%;background:var(--terracotta);color:#fff;border:none;border-radius:20px;padding:10px;font-weight:700;font-size:13px;cursor:pointer;}
+  .cb-note{font-size:10px;color:var(--ink-soft);text-align:center;padding:6px 10px 0;background:#fff;}
+
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr;}
+    .ph{order:-1;max-width:400px;margin:0 auto;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    nav.links{display:none;}
+  }
+  @media(max-width:560px){
+    h1{font-size:2.2rem;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .nav-cta{display:none;}
+    .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;}
+    #cb-panel{right:16px;left:16px;width:auto;bottom:88px;}
+    #cb-launcher{right:16px;bottom:16px;}
+    .lightbox{padding:16px;}
+    .lightbox-nav{width:40px;height:40px;font-size:18px;}
+    .lightbox-prev{left:8px;}
+    .lightbox-next{right:8px;}
+    .lightbox-close{top:10px;right:10px;width:38px;height:38px;}
+  }
+</style>
+</head>
+<body>
+
+<div id="demo-banner">DEMO — Premium Package example, for illustration only<button onclick="document.getElementById('demo-banner').style.display='none';document.body.style.paddingTop='0';document.querySelector('header.nav').style.top='0';">Hide</button></div>
+
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="premium-demo-index.html" class="logo">Ferncroft</a>
+    <nav class="links">
+      <a href="premium-demo-index.html">Home</a>
+      <a href="premium-demo-services.html">Services</a>
+      <a href="premium-demo-gallery.html">Gallery</a>
+      <a href="premium-demo-about.html">About</a>
+      <a href="premium-demo-contact.html" class="active">Contact</a>
+    </nav>
+    <a href="premium-demo-contact.html" class="nav-cta">Get a Quote</a>
+  </div>
+</header>
+
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Get In Touch</span>
+    <h1>Request Your Free Quote</h1>
+    <p>Tell us about your garden and we'll come back with a straightforward quote.</p>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap contact-grid">
+    <div class="info-card">
+      <div class="info-row"><span class="ic">&#128231;</span><div><div class="label">Email</div><div class="val">hello@example.co.uk</div></div></div>
+      <div class="info-row"><span class="ic">&#128222;</span><div><div class="label">Phone</div><div class="val">01234 567 890</div></div></div>
+      <div class="info-row"><span class="ic">&#128205;</span><div><div class="label">Coverage</div><div class="val">Projects across the local area</div></div></div>
+      <div class="info-row"><span class="ic">&#128337;</span><div><div class="label">Office Hours</div><div class="val">Mon&ndash;Fri, 8am&ndash;5pm</div></div></div>
+    </div>
+    <form class="contact-form" id="fc-form">
+      <label for="ff-name">Your Name</label>
+      <input type="text" id="ff-name" required>
+      <label for="ff-email">Email</label>
+      <input type="email" id="ff-email" required>
+      <label for="ff-message">Tell us about your garden</label>
+      <textarea id="ff-message" placeholder="Size of garden, what you have in mind, rough timeframe..."></textarea>
+      <button type="submit" class="btn btn-primary">Request a Quote</button>
+    </form>
+  </div>
+</section>
+<script>
+document.getElementById('fc-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('ff-name').value;
+  var email = document.getElementById('ff-email').value;
+  var message = document.getElementById('ff-message').value;
+  var subject = encodeURIComponent('Quote request from ' + name);
+  var body = encodeURIComponent(message + '\n\nReply to: ' + email);
+  window.location.href = 'mailto:hello@example.co.uk?subject=' + subject + '&body=' + body;
+});
+</script>
+
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="brand">Ferncroft</div>
+    <div>Landscaping &amp; Garden Design</div>
+    <div class="flinks">
+      <a href="premium-demo-index.html">Home</a><a href="premium-demo-services.html">Services</a><a href="premium-demo-gallery.html">Gallery</a><a href="premium-demo-about.html">About</a><a href="premium-demo-contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="demo-tag">Clearline Web — Premium Package demo</div>
+</footer>
+
+
+<button id="cb-launcher" aria-label="Open chat">
+  <span class="chat-ic">&#128172;</span>
+  <span class="close-ic">&#10005;</span>
+</button>
+<div id="cb-panel">
+  <div class="cb-head"><span class="dot"></span><div><div class="t1">Ferncroft</div><div class="t2">Quick answers, or message us directly</div></div></div>
+  <div class="cb-body" id="cb-body"></div>
+  <div class="cb-live"><button id="cb-live-btn">&#128172; Talk to a real person</button></div>
+  <div class="cb-note">Quick-answers are automated. "Talk to a real person" connects you live during working hours.</div>
+</div>
+
+<script>
+(function(){
+  var KB = [
+    { keys: ["price","cost","how much","quote"], a: "Every garden's different, so we quote after a quick chat about what you have in mind — get in touch and we'll arrange a visit." },
+    { keys: ["design","plan","3d"], a: "Yes — Premium projects start with a design consultation so you know exactly what you're getting before any work begins." },
+    { keys: ["area","cover","where"], a: "We take on projects across the local area — get in touch and we'll confirm we can help." },
+    { keys: ["time","long","when"], a: "Timelines depend on the size of the project — a patio might take a few days, a full garden redesign longer. We'll give you a clear timeline in your quote." },
+    { keys: ["patio","paving"], a: "We design and lay patios and paving in a wide range of styles and materials — see the Gallery for examples." },
+    { keys: ["planting","border"], a: "We plan and plant borders suited to your soil, light and how much upkeep you want going forward." }
+  ];
+  var FALLBACK = "Good question — tap \u201cTalk to a real person\u201d below and we'll get back to you directly.";
+  var launcher = document.getElementById('cb-launcher');
+  var panel = document.getElementById('cb-panel');
+  var body = document.getElementById('cb-body');
+  var greeted = false;
+
+  function addMsg(text, who){
+    var d = document.createElement('div');
+    d.className = 'cb-msg ' + who;
+    d.textContent = text;
+    body.appendChild(d);
+    body.scrollTop = body.scrollHeight;
+  }
+  function addQuick(){
+    var wrap = document.createElement('div');
+    wrap.className = 'cb-quick';
+    [["Get a quote","quote"],["Do you design gardens?","design"],["Areas covered","area"],["How long does it take?","time"]].forEach(function(pair){
+      var b = document.createElement('button');
+      b.textContent = pair[0];
+      b.addEventListener('click', function(){ handleQuery(pair[1]); });
+      wrap.appendChild(b);
+    });
+    body.appendChild(wrap);
+    body.scrollTop = body.scrollHeight;
+  }
+  function handleQuery(q){
+    var lower = q.toLowerCase();
+    var hit = KB.filter(function(k){ return k.keys.some(function(kw){ return lower.indexOf(kw) !== -1; }); })[0];
+    addMsg(hit ? hit.a : FALLBACK, 'bot');
+  }
+  launcher.addEventListener('click', function(){
+    var open = panel.classList.toggle('open');
+    launcher.classList.toggle('open', open);
+    if (open && !greeted){
+      greeted = true;
+      addMsg("Hi! I'm the Ferncroft assistant. Ask about quotes, design, or areas we cover \u2014 or talk to a real person below.", 'bot');
+      addQuick();
+    }
+  });
+  document.getElementById('cb-live-btn').addEventListener('click', function(){
+    window.location.href = 'premium-demo-contact.html';
+  });
+})();
+</script>
+
+</body>
+</html>
