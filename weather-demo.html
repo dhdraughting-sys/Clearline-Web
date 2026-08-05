@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Weather Lookup — Clearline Web Demo</title>
+<meta name="description" content="A live example of an interactive feature Clearline Web can build into your site — search any city for current weather and a 3-day forecast.">
+<style>
+  :root{
+    --navy:#1F3864; --navy-dark:#152747; --steel:#3E6FA6; --line:#DCE6F1;
+    --ink:#22303F; --muted:#5C6B7A; --bg:#FAFBFC; --white:#FFFFFF; --accent:#C9A24B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  a{color:var(--steel);}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+  .eyebrow{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+  h1{font-size:1.9rem;color:var(--navy);margin-bottom:8px;}
+  .lede{color:var(--muted);margin-bottom:32px;font-size:1.02rem;}
+  .search-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 2px 10px rgba(31,56,100,.06);}
+  .search-row{display:flex;gap:10px;}
+  .search-row input{flex:1;padding:13px 16px;font-size:1rem;border:1px solid var(--line);border-radius:8px;outline:none;}
+  .search-row input:focus{border-color:var(--steel);}
+  .search-row button{background:var(--navy);color:#fff;border:none;border-radius:8px;padding:0 24px;font-size:.95rem;font-weight:700;cursor:pointer;}
+  .search-row button:hover{background:var(--navy-dark);}
+  .status{margin-top:12px;font-size:.9rem;color:var(--muted);min-height:1.2em;}
+  .status.err{color:#B23B3B;}
+  .quicktowns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .quicktowns button{font-size:.8rem;padding:6px 12px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;}
+  .quicktowns button:hover{border-color:var(--steel);color:var(--steel);}
+
+  .result{display:none;margin-top:22px;}
+  .current-card{background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:#fff;border-radius:14px;padding:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  .current-loc{font-size:1.15rem;font-weight:700;}
+  .current-loc .sub{font-size:.82rem;font-weight:400;opacity:.75;margin-top:2px;}
+  .current-temp{display:flex;align-items:center;gap:10px;}
+  .current-temp img{width:56px;height:56px;}
+  .current-temp .t{font-size:2.6rem;font-weight:800;}
+  .current-meta{display:flex;gap:20px;margin-top:16px;width:100%;font-size:.85rem;opacity:.9;flex-wrap:wrap;}
+
+  .forecast{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;}
+  .fday{flex:1;min-width:130px;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center;}
+  .fday .date{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+  .fday img{width:44px;height:44px;margin:6px auto;}
+  .fday .cond{font-size:.82rem;color:var(--ink);min-height:2.2em;}
+  .fday .temps{font-size:.92rem;font-weight:700;margin-top:4px;}
+  .fday .temps .lo{color:var(--muted);font-weight:400;}
+  .fday .rain{font-size:.76rem;color:var(--steel);margin-top:4px;}
+
+  .attribution{margin-top:22px;font-size:.75rem;color:var(--muted);text-align:center;}
+  .callout{margin-top:40px;background:var(--white);border:1px dashed var(--line);border-radius:12px;padding:20px 22px;font-size:.92rem;color:var(--muted);}
+  .callout strong{color:var(--navy);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">Clearline Web — Interactive Feature Demo</span>
+  <h1>Live Weather Lookup</h1>
+  <p class="lede">This is a real, working example of the kind of interactive feature we can build into your site — search any town or city for current conditions and a 3-day outlook, no page reload.</p>
+
+  <div class="search-card">
+    <div class="search-row">
+      <input type="text" id="citySearch" placeholder="Search a town or city…" autocomplete="off">
+      <button id="searchBtn">Search</button>
+    </div>
+    <div class="quicktowns">
+      <button data-city="Leamington Spa">Leamington Spa</button>
+      <button data-city="Coventry">Coventry</button>
+      <button data-city="Birmingham">Birmingham</button>
+      <button data-city="Warwick">Warwick</button>
+    </div>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="result" id="result">
+    <div class="current-card">
+      <div class="current-loc">
+        <div id="locName">—</div>
+        <div class="sub" id="locSub"></div>
+      </div>
+      <div class="current-temp">
+        <img id="curIcon" src="" alt="">
+        <div>
+          <div class="t" id="curTemp">—</div>
+          <div id="curCond" style="font-size:.85rem;opacity:.85;"></div>
+        </div>
+      </div>
+      <div class="current-meta">
+        <span id="curFeels"></span>
+        <span id="curHumidity"></span>
+        <span id="curWind"></span>
+      </div>
+    </div>
+    <div class="forecast" id="forecast"></div>
+  </div>
+
+  <div class="attribution">Weather data by <a href="https://www.weatherapi.com/" target="_blank" rel="noopener">WeatherAPI.com</a></div>
+
+  <div class="callout">
+    <strong>This is what "interactive" actually means for a website</strong> — not just animations, but real functionality: live data, search, instant results. If a feature like this would genuinely help your customers (checking availability, tracking an order, searching stock, getting a live quote), that's exactly the kind of thing Clearline Web builds in.
+  </div>
+</div>
+
+<script>
+// =====================================================================
+// WeatherAPI.com free tier — current + 3-day forecast, commercial use
+// permitted, no cost. Sign up free at weatherapi.com to get a key.
+// Attribution link above is required by their free-tier terms.
+// =====================================================================
+const WEATHER_API_KEY = "YOUR_WEATHERAPI_KEY_HERE";
+
+const cityInput = document.getElementById('citySearch');
+const searchBtn = document.getElementById('searchBtn');
+const statusEl = document.getElementById('status');
+const resultEl = document.getElementById('result');
+
+function iconUrl(path) {
+  return path.startsWith('//') ? 'https:' + path : path;
+}
+
+async function lookupCity(city) {
+  if (!city || !city.trim()) return;
+  statusEl.className = 'status';
+  statusEl.textContent = 'Searching…';
+  resultEl.style.display = 'none';
+
+  if (!WEATHER_API_KEY || WEATHER_API_KEY === 'YOUR_WEATHERAPI_KEY_HERE') {
+    statusEl.className = 'status err';
+    statusEl.textContent = 'Demo not yet live — add a free WeatherAPI.com key to activate this.';
+    return;
+  }
+
+  try {
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${encodeURIComponent(WEATHER_API_KEY)}&q=${encodeURIComponent(city)}&days=3&aqi=no&alerts=no`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data.error) {
+      statusEl.className = 'status err';
+      statusEl.textContent = data.error.message || 'City not found — try a different search.';
+      return;
+    }
+    renderWeather(data);
+    statusEl.textContent = '';
+  } catch (err) {
+    statusEl.className = 'status err';
+    statusEl.textContent = 'Could not reach the weather service — please try again.';
+  }
+}
+
+function renderWeather(data) {
+  const loc = data.location, cur = data.current;
+  document.getElementById('locName').textContent = `${loc.name}, ${loc.country}`;
+  document.getElementById('locSub').textContent = loc.region ? loc.region : '';
+  document.getElementById('curIcon').src = iconUrl(cur.condition.icon);
+  document.getElementById('curIcon').alt = cur.condition.text;
+  document.getElementById('curTemp').textContent = Math.round(cur.temp_c) + '°C';
+  document.getElementById('curCond').textContent = cur.condition.text;
+  document.getElementById('curFeels').textContent = `Feels like ${Math.round(cur.feelslike_c)}°C`;
+  document.getElementById('curHumidity').textContent = `Humidity ${cur.humidity}%`;
+  document.getElementById('curWind').textContent = `Wind ${Math.round(cur.wind_kph)} km/h`;
+
+  const forecastEl = document.getElementById('forecast');
+  forecastEl.innerHTML = '';
+  data.forecast.forecastday.forEach((fd, i) => {
+    const dateLabel = i === 0 ? 'Today' : new Date(fd.date + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+    const card = document.createElement('div');
+    card.className = 'fday';
+    card.innerHTML = `
+      <div class="date">${dateLabel}</div>
+      <img src="${iconUrl(fd.day.condition.icon)}" alt="${fd.day.condition.text}">
+      <div class="cond">${fd.day.condition.text}</div>
+      <div class="temps">${Math.round(fd.day.maxtemp_c)}° <span class="lo">${Math.round(fd.day.mintemp_c)}°</span></div>
+      <div class="rain">☔ ${fd.day.daily_chance_of_rain}%</div>
+    `;
+    forecastEl.appendChild(card);
+  });
+  resultEl.style.display = 'block';
+}
+
+searchBtn.addEventListener('click', () => lookupCity(cityInput.value));
+cityInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') lookupCity(cityInput.value); });
+document.querySelectorAll('.quicktowns button').forEach(btn => {
+  btn.addEventListener('click', () => { cityInput.value = btn.dataset.city; lookupCity(btn.dataset.city); });
+});
+</script>
+</body>
+</html>
