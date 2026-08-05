@@ -64,10 +64,10 @@
       <button id="searchBtn">Search</button>
     </div>
     <div class="quicktowns">
-      <button data-city="Leamington Spa">Leamington Spa</button>
-      <button data-city="Coventry">Coventry</button>
-      <button data-city="Birmingham">Birmingham</button>
-      <button data-city="Warwick">Warwick</button>
+      <button data-city="Leamington Spa" data-query="52.288,-1.531">Leamington Spa</button>
+      <button data-city="Coventry" data-query="52.406,-1.512">Coventry</button>
+      <button data-city="Birmingham" data-query="52.480,-1.903">Birmingham</button>
+      <button data-city="Warwick" data-query="52.283,-1.583">Warwick</button>
     </div>
     <div class="status" id="status"></div>
   </div>
@@ -118,6 +118,23 @@ function iconUrl(path) {
   return path.startsWith('//') ? 'https:' + path : path;
 }
 
+// Quick-picks pass exact lat,lon coordinates (set below) so they always hit the
+// right place. Free-text searches are biased towards the UK, since a bare town
+// name like "Birmingham" also matches a same-named US town and WeatherAPI's
+// free-text search doesn't otherwise know which country we mean.
+function isCoordQuery(q) {
+  return /^-?\d+(\.\d+)?,-?\d+(\.\d+)?$/.test(q.trim());
+}
+function buildQuery(raw) {
+  const q = raw.trim();
+  if (isCoordQuery(q)) return q;
+  // A comma means the searcher already qualified it themselves (e.g. "Paris, France"
+  // or "Leamington Spa, UK") — leave it alone. Otherwise bias plain town names
+  // towards the UK, since names like "Birmingham" also match a same-named US town.
+  if (q.indexOf(',') !== -1) return q;
+  return q + ', UK';
+}
+
 async function lookupCity(city) {
   if (!city || !city.trim()) return;
   statusEl.className = 'status';
@@ -131,7 +148,7 @@ async function lookupCity(city) {
   }
 
   try {
-    const url = `https://api.weatherapi.com/v1/forecast.json?key=${encodeURIComponent(WEATHER_API_KEY)}&q=${encodeURIComponent(city)}&days=3&aqi=no&alerts=no`;
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${encodeURIComponent(WEATHER_API_KEY)}&q=${encodeURIComponent(buildQuery(city))}&days=3&aqi=no&alerts=no`;
     const res = await fetch(url);
     const data = await res.json();
     if (data.error) {
@@ -180,7 +197,7 @@ function renderWeather(data) {
 searchBtn.addEventListener('click', () => lookupCity(cityInput.value));
 cityInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') lookupCity(cityInput.value); });
 document.querySelectorAll('.quicktowns button').forEach(btn => {
-  btn.addEventListener('click', () => { cityInput.value = btn.dataset.city; lookupCity(btn.dataset.city); });
+  btn.addEventListener('click', () => { cityInput.value = btn.dataset.city; lookupCity(btn.dataset.query || btn.dataset.city); });
 });
 </script>
 </body>
