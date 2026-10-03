@@ -187,6 +187,23 @@
   .footer-mark svg{width:100%;height:100%;}
   footer .footer-name{color:var(--white);font-weight:700;}
   footer .footer-name .sub{font-size:.62em;font-weight:800;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-left:1px;}
+  .footer-links{margin-top:14px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .footer-links a{color:#B9C6D8;text-decoration:none;}
+  .footer-links a:hover{color:var(--white);}
+
+  /* Cookie banner */
+  #cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:300;background:var(--navy-dark);color:#fff;padding:16px 20px;box-shadow:0 -6px 24px rgba(0,0,0,.25);}
+  #cookie-banner .cookie-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;justify-content:space-between;}
+  #cookie-banner p{margin:0;font-size:.9rem;line-height:1.5;color:#fff;flex:1 1 320px;}
+  #cookie-banner a{color:var(--accent);}
+  #cookie-banner .cookie-actions{display:flex;gap:10px;flex-shrink:0;}
+  #cookie-banner .btn-cookie{padding:10px 20px;border-radius:6px;font-weight:600;font-size:.85rem;border:1px solid transparent;cursor:pointer;}
+  #cookie-accept{background:var(--accent);color:var(--navy-dark);}
+  #cookie-reject{background:transparent;color:#fff;border-color:#B9C6D8;}
+  @media (max-width:640px){
+    #cookie-banner .cookie-inner{flex-direction:column;align-items:stretch;}
+    #cookie-banner .cookie-actions{justify-content:flex-end;}
+  }
 
   @media (max-width:760px){
     nav.main-nav{display:none;}
@@ -437,6 +454,10 @@
     <div class="footer-name">Clearline<span class="sub">Web</span></div>
   </div>
   <p>Clean, professional websites for small businesses across Warwickshire &amp; the West Midlands.</p>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="#" id="cookie-settings-link">Cookie Settings</a>
+  </div>
 </footer>
 
 <script>
@@ -598,19 +619,65 @@
 })();
 </script>
 
-<!--Start of Tawk.to Script-->
+<!--Start of Tawk.to Script (only loaded after cookie consent — see cookie banner below) -->
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6a70e2458a23461d4c6fcdc9/1jv4f7okl';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
+function cwLoadTawk(){
+  if (window.__cwTawkLoaded) return;
+  window.__cwTawkLoaded = true;
+  var Tawk_API=window.Tawk_API||{}, Tawk_LoadStart=new Date();
+  window.Tawk_API = Tawk_API;
+  window.Tawk_LoadStart = Tawk_LoadStart;
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/6a70e2458a23461d4c6fcdc9/1jv4f7okl';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+}
 </script>
 <!--End of Tawk.to Script-->
+
+<!--Start of cookie consent banner-->
+<div id="cookie-banner" hidden role="dialog" aria-label="Cookie notice">
+  <div class="cookie-inner">
+    <p>We use essential cookies to run this site. If you accept, we'll also load our live chat widget (Tawk.to), which sets its own cookie &mdash; see our <a href="privacy.html">Privacy Policy</a> for details. We won't load it unless you say yes.</p>
+    <div class="cookie-actions">
+      <button type="button" id="cookie-accept" class="btn-cookie">Accept</button>
+      <button type="button" id="cookie-reject" class="btn-cookie">Reject</button>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+(function(){
+  var banner = document.getElementById('cookie-banner');
+  var acceptBtn = document.getElementById('cookie-accept');
+  var rejectBtn = document.getElementById('cookie-reject');
+  var settingsLink = document.getElementById('cookie-settings-link');
+  var consent = null;
+  try { consent = localStorage.getItem('cwCookieConsent'); } catch (e) {}
+
+  if (consent === 'accepted') {
+    cwLoadTawk();
+  } else if (consent !== 'rejected' && banner) {
+    banner.hidden = false;
+  }
+
+  if (acceptBtn) acceptBtn.addEventListener('click', function(){
+    try { localStorage.setItem('cwCookieConsent', 'accepted'); } catch (e) {}
+    if (banner) banner.hidden = true;
+    cwLoadTawk();
+  });
+  if (rejectBtn) rejectBtn.addEventListener('click', function(){
+    try { localStorage.setItem('cwCookieConsent', 'rejected'); } catch (e) {}
+    if (banner) banner.hidden = true;
+  });
+  if (settingsLink) settingsLink.addEventListener('click', function(e){
+    e.preventDefault();
+    if (banner) banner.hidden = false;
+  });
+})();
+</script>
+<!--End of cookie consent banner-->
 
 </body>
 </html>
